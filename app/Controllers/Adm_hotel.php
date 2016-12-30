@@ -18,7 +18,7 @@ class Adm_hotel extends Resources\Controller
 		$this->image = new Resources\Image; 
 		
     }
-	
+	tes
 	public function index($page=1)
     {
         //pagination
