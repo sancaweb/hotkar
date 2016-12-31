@@ -66,8 +66,8 @@
 				</form>
 				
 				<div class="login-c3">
-				<div class="left"><a href="#" class="whitelink"><span></span>Website</a></div>
-				<div class="right"><a href="#" class="whitelink">Lost password?</a></div>
+				<div class="left"><a href="<?php echo $this->uri->baseUri;?>" class="whitelink"><span></span>Website</a></div>
+				<!-- <div class="right"><a href="#" class="whitelink">Lost password?</a></div> -->
 				</div>	
 			</div> <!-- END Login-c1 -->
 				
@@ -83,10 +83,11 @@
 	<!-- Load Animo -->
 	<script src="<?php echo $this->uri->baseUri.STYLE;?>plugins/animo/animo.js"></script>
 	
-	<script>
+	
 	<?php 
 	if(isset($animo)){
 	if($animo=='on'){?>	
+	<script>
 	$( document ).ready(function() {
 		$('.login-wrap').animo( { animation: 'tada' } );
 	});
