@@ -58,19 +58,18 @@
 					</div>
 					<div class="clearfix"></div>
 					<div class="line4"></div>
-					</br>
-					</br>
-				</div>
-				
+				</div>				
 				<div class="alignbottom">
 					<button type="submit" class="btn-search4"  type="submit" >Submit</button>							
+					
 				</div>
 				</form>
+				
 				<div class="login-c3">
 				<div class="left"><a href="#" class="whitelink"><span></span>Website</a></div>
 				<div class="right"><a href="#" class="whitelink">Lost password?</a></div>
-			</div>	
-			</div>
+				</div>	
+			</div> <!-- END Login-c1 -->
 				
 		</div>
 		<!-- End of Login Wrap  -->
