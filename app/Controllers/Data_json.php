@@ -164,7 +164,8 @@ class Data_json extends Resources\Controller
 			$username=$this->request->post('username');
 			$old_password=md5($this->request->post('old_password'));
 			
-			if($this->user_back->cek_user_pass($username,$old_password)){
+			$cek_user_pass=$this->user_back->cek_user_pass($username,$old_password);
+			if($cek_user_pass){
 				
 			}else{
 				$errors['cek_user'] = 'Password yang anda masukan salah.';
@@ -182,11 +183,18 @@ class Data_json extends Resources\Controller
 
 				// DO ALL YOUR FORM PROCESSING HERE
 				// THIS CAN BE WHATEVER YOU WANT TO DO (LOGIN, SAVE, UPDATE, WHATEVER)
-
+				$new_password=$this->request->post('new_password');
+				
 				$id_user=$this->request->post('id_user');
 				$nama_pengguna=ucwords($this->request->post('nama_pengguna',FILTER_SANITIZE_MAGIC_QUOTES));
 				$email=$this->request->post('email');
-				$new_password=md5($this->request->post('new_password'));
+				
+				if(empty($new_password)){
+					$new_password=$old_password;
+				}else{
+					$new_password=md5($new_password);
+				}
+				
 				$input_date=date('Y-m-d');
 				
 				//Edit User

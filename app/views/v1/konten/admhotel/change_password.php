@@ -35,10 +35,10 @@
 		</div>
 		<br/>
 		New Password<br/>
-		<input name="new_password" id="new_password" type="password" class="form-control input-lg" placeholder="Masukan password baru anda" required>
+		<input name="new_password" id="new_password" type="password" class="form-control input-lg" placeholder="Masukan password baru anda" >
 		<br/>
 		Confirm Password<br/>
-		<input name="confirm_password" id="confirm_password" type="password" class="form-control input-lg" placeholder="Ketik ulang password" required>
+		<input name="confirm_password" id="confirm_password" type="password" class="form-control input-lg" placeholder="Ketik ulang password" >
 		<br/>
 		<p id="loader"><img src="<?php echo $this->uri->baseUri;?>style/images/ajax-loader.gif"></p><br/>
 		<button type="submit" class="btn-search5">Save changes</button>

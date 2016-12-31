@@ -36,7 +36,6 @@ ditus('#loader').hide();
 			'email' 		: ditus('input[name=email]').val(),
 			'old_password' 		: ditus('input[name=old_password]').val(),
 			'new_password' 		: ditus('input[name=new_password]').val(),
-			'confirm_password' 		: ditus('input[name=confirm_password]').val(),
 		};
 		
 		// process the form
