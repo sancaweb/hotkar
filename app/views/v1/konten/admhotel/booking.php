@@ -3,10 +3,16 @@
 
 	<table class="table table-bordered  mt-10">
 	<tr class="grey opensans">
-		<td class="center"><span class="size30 slim lh4 dark">10</span><br/><span class="size12">Trips</span></td>
-		<td class="center"><span class="size30 slim lh4 dark">20</span><br/><span class="size12">Places</span></td>
-		<td class="center"><span class="size30 slim lh4 dark">14</span><br/><span class="size12">Days away</span></td>
-		<td class="center"><span class="size30 slim lh4 dark">5</span><br/><span class="size12">Countries</span></td>
+		<td class="center">
+		<span class="size30 slim lh4 dark"><?php echo $totalAll_booking;?></span><br/>
+		<span class="size12">All</span>		
+		</td>
+		<td class="center"><span class="size30 slim lh4 dark"><?php echo $all_done;?></span><br/><span class="size12">All Done</span></td>
+		<td class="center"><span class="size30 slim lh4 dark"><?php echo $paid_to_you;?></span><br/><span class="size12">Paid To You</span></td>
+		<td class="center"><span class="size30 slim lh4 dark"><?php echo $total_checked;?></span><br/><span class="size12">Checked In</span></td>
+		<td class="center"><span class="size30 slim lh4 dark"><?php echo $payment_verified;?></span><br/><span class="size12">Siap Checkin</span></td>
+		<td class="center"><span class="size30 slim lh4 dark"><?php echo $masih_proses;?></span><br/><span class="size12">Transaksi Masih Proses</span></td>
+		
 	</tr>
 	</table>
 	<br/>
@@ -92,7 +98,7 @@
 									?>
 								  <div class="box-body">
 									<div class="form-group">
-									  <label for="no_pesanan" class="col-sm-3 control-label">Status Pemesanan<?php echo $data_booking->status;?> :</label>									 
+									  <label for="no_pesanan" class="col-sm-3 control-label">Status Pemesanan :</label>									 
 									 <div class="col-sm-9">
 										<input type="text" id="no_pesanan" class="form-control input-lg" value="<?php echo $ket_status;?>" readonly>										
 									  </div>

@@ -49,8 +49,15 @@ class Admhotel extends Resources\Controller
 			$data_user=$this->user_back->get_user_byID($user_id);
 			
 			$data_booking=$this->booking->viewall_order_by_idHotel($id_hotel);
+			$totalAll_booking=$this->booking->hitungAll_order_by_idHotel($id_hotel);
 			
 			$data['data_booking'] = $data_booking;
+			$data['totalAll_booking'] = $totalAll_booking;
+			$data['paid_to_you']=$this->booking->hitung_order_by_idHotel_and_status($id_hotel,6);
+			$data['all_done']=$this->booking->hitung_order_by_idHotel_and_status($id_hotel,7);
+			$data['total_checked']=$this->booking->hitung_order_by_idHotel_and_status($id_hotel,5);
+			$data['payment_verified']=$this->booking->hitung_order_by_idHotel_and_status($id_hotel,4);
+			$data['masih_proses']=$this->booking->hitung_transaction_on_process($id_hotel);
 			$data['title'] = 'Administasi Hotel';
 			$data['subtitle']= 'Halaman utama';
 			$data["page"]='booking';

@@ -41,6 +41,19 @@ class Booking {
 		return $this->db->results("SELECT * FROM pemesanan WHERE id_hotel='".$id_hotel."' ORDER by FIELD (status,'4','6','5','7','3','2','1') ASC, book_date DESC");
 	}
 	
+	public function hitungAll_order_by_idHotel($id_hotel){
+		return $this->db->getVar("SELECT count(id) FROM pemesanan WHERE id_hotel='".$id_hotel."'");
+	}
+	
+	public function hitung_order_by_idHotel_and_status($id_hotel,$status){
+		return $this->db->getVar("SELECT count(id) FROM pemesanan WHERE id_hotel='".$id_hotel."' AND status='".$status."'");
+	}
+	
+	public function hitung_transaction_on_process($id_hotel){
+		
+		return $this->db->getVar("SELECT count(id) FROM pemesanan WHERE id_hotel='".$id_hotel."' AND status IN (3,2,1)");
+	}
+	
 	public function edit_status($data_pesanan,$id_pesanan){
 		return $this->db->update("pemesanan",$data_pesanan,array('id'=>$id_pesanan));
 	}
