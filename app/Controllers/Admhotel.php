@@ -191,16 +191,16 @@ class Admhotel extends Resources\Controller
 		 $this->email = new Resources\Email;
 			
 			$to='sanca.snake@gmail.com';
-			$subject='Registrasi Umroh Online';
+			$subject='Registrasi Hotel Karawang';
 			$message='Tes Email
 			';
 			
 			  $send = $this->email
-			->to($to)
-			->subject($subject)
-			->message($message)
-			->from('info@mariumroh.com', 'Mariumroh.com')
-			->mail();
+				->to($to)
+				->subject($subject)
+				->message($message)
+				->from('sanca@hotelkarawang.com', 'Hotelkarawang.com')
+				->mail();
 	    
         if( $send )
             echo 'success';

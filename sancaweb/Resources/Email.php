@@ -288,7 +288,7 @@ class Email
     }
 
     /**
-     * Main Panada method to send the email.
+     * Main Panada method to send the email. 
      *
      * @param string | array
      * @param string
@@ -311,7 +311,7 @@ class Email
         
         if( ! empty($message) )
             $this->message = $message;
-        
+		
         if( ! empty($fromEmail) )
             $this->fromEmail = $fromEmail;
         

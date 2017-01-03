@@ -18,7 +18,7 @@
 				  <li <?php if($menu=='home'){echo 'class="active"';} ?>><a href="<?php echo $this->uri->baseUri;?>">Home</a></li>
 				  <li <?php if($menu=='hotel'){echo 'class="active"';} ?>><a href="<?php echo $this->uri->baseUri;?>index.php/hotel">Hotel</a></li>
 				  
-				  <li <?php if($menu=='cek_pemesanan'){echo 'class="active"';} ?>><a href="<?php echo $this->uri->baseUri;?>index.php/booking/cek_pemesanan">Cek Pemesanan</a></li>
+				  <li <?php if($menu=='cek_pemesanan'){echo 'class="active"';} ?>><a href="<?php echo $this->uri->baseUri;?>index.php/cek">Cek Pemesanan</a></li>
 				  <?php 
 					if($this->session->getValue('id_user')){
 						?>
@@ -30,17 +30,6 @@
 					}
 				  ?>
 				  
-				  <!--
-				  <li><a href="#">Daftar</a></li> -->
-					<!--
-				  <li class="dropdown">
-					<a data-toggle="dropdown" class="dropdown-toggle" href="#">Akun<b class="lightcaret mt-2"></b></a>
-					<ul class="dropdown-menu">
-					  <li class="dropdown-header">Aligned Right Dropdown</li>	
-					  <li><a href="#">Sample Link 1</a></li>
-					  <li><a href="#">Sample Link 2</a></li>
-					</ul>
-				  </li>	 -->
 				</ul>
 			  </div>
 			  <!-- /Navigation-->			  

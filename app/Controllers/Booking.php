@@ -203,19 +203,7 @@ class Booking extends Resources\Controller
 			$this->output(TEMPLATE.'konten/finish_booking', $data);
 		
 	}
-	
-	public function cek_pemesanan(){
-		$data['title'] = 'Cek Pemesanan';
-		$data['subtitle']= 'Cek Pemesanan Hotel';
-		$data["page"]='cek_pemesanan';
-		$data['menu']='cek_pemesanan';
-		$limit=3;
-		$home_slide=$this->hotel->viewall_hotel_limit($limit);
 		
-		$data['home_slide'] = $home_slide;
-		$this->output(TEMPLATE.'konten/cek_pemesanan', $data);
-	}
-	
 	public function procek_pemesanan(){
 		
 		if($_POST){
