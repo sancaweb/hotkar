@@ -20,7 +20,8 @@
 
 			<!-- FILTERS -->
 			<div class="col-md-3 filters offset-0">
-			<?php $this->output(TEMPLATE.'sidebar/search_side');?>
+			<?php $this->output(TEMPLATE.'sidebar/search_side');
+			?>
 			<?php //$this->output(TEMPLATE.'sidebar/filter_side');?>
 			</div>
 			<!-- END OF FILTERS -->

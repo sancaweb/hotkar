@@ -114,9 +114,11 @@
 							 if($page=='info_pembayaran'){
 								?>
 								<script>
-								$(document).ready(function() {
+								var countwak=jQuery;
+									countwak.noConflict();
+								countwak(document).ready(function() {
 									var austDay = new Date("<?php echo $date_count;?>");
-								$('#waktu_mundur').countdown({
+								countwak('#waktu_mundur').countdown({
 									until: austDay, 
 									layout: '<div class="itemc"><p>{hn}</p> <span>-{hl}-</span></div> <div class="itemc"><p>{mn}</p> <span>-{ml}-</span></div> <div class="itemc"><p>{sn}</p> <span>-{sl}-</span></div>',
 									onExpiry: liftOff				
@@ -124,7 +126,7 @@
 								
 								
 								function liftOff() {
-										$("#button_konfirmasi").replaceWith('<a id="button_konfirmasi" class="center btn-danger margtop20 btn-block">Mohon maaf, batas waktu pembayaran anda sudah habis. <br/>Silahkan ulangi kembali pemesanan.!</a>');
+										countwak("#button_konfirmasi").replaceWith('<a id="button_konfirmasi" class="center btn-danger margtop20 btn-block">Mohon maaf, batas waktu pembayaran anda sudah habis. <br/>Silahkan ulangi kembali pemesanan.!</a>');
 									}
 								
 								});

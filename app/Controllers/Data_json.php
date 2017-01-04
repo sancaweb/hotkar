@@ -66,19 +66,23 @@ class Data_json extends Resources\Controller
 		// validate the variables ======================================================
 			// if any of these variables don't exist, add an error to our $errors array
 
-			if (empty($this->request->post('nama_guest',FILTER_SANITIZE_MAGIC_QUOTES)))
+			if($this->request->post('nama_guest',FILTER_SANITIZE_MAGIC_QUOTES)==''){
 				$errors['nama_guest'] = 'Nama Guest wajib di Isi.';
+			}
 
-			if (empty($this->request->post('asal_kota')))
+			if ($this->request->post('asal_kota')){
 				$errors['asal_kota'] = 'Asal Kota wajib di Isi.';
-
-			if (empty($this->request->post('judul',FILTER_SANITIZE_MAGIC_QUOTES)))
-				$errors['judul'] = 'Judul wajib di Isi.';
+			}
 			
-			if (empty($this->request->post('testimoni')))
+			if($this->request->post('judul',FILTER_SANITIZE_MAGIC_QUOTES) == ''){
+				$errors['judul'] = 'Judul wajib di Isi.';
+			}
+			
+			if($this->request->post('testimoni') == ''){
 				$errors['testimoni'] = 'Testimoni wajib di Isi.';
+			}
 
-
+			
 		// return a response ===========================================================
 
 			// if there are any errors in our errors array, return a success boolean of false
@@ -189,7 +193,7 @@ class Data_json extends Resources\Controller
 				$nama_pengguna=ucwords($this->request->post('nama_pengguna',FILTER_SANITIZE_MAGIC_QUOTES));
 				$email=$this->request->post('email');
 				
-				if(empty($new_password)){
+				if($new_password == ''){
 					$new_password=$old_password;
 				}else{
 					$new_password=md5($new_password);
@@ -230,13 +234,14 @@ class Data_json extends Resources\Controller
 		
 		// validate the variables ======================================================
 			// if any of these variables don't exist, add an error to our $errors array
-
-			if (empty($this->request->post('nama_hotel',FILTER_SANITIZE_MAGIC_QUOTES)))
-				$errors['nama_hotel'] = 'Nama Hotel wajib di Isi.';
-
-			if (empty($this->request->post('alamat')))
-				$errors['alamat'] = 'Alamat wajib di Isi.';
 			
+			if($this->request->post('nama_hotel',FILTER_SANITIZE_MAGIC_QUOTES)==''){
+				$errors['nama_hotel'] = 'Nama Hotel wajib di Isi.';
+			}
+			
+			if($this->request->post('alamat')== ''){
+				$errors['alamat'] = 'Alamat wajib di Isi.';
+			}
 		// return a response ===========================================================
 
 			// if there are any errors in our errors array, return a success boolean of false
@@ -471,14 +476,27 @@ class Data_json extends Resources\Controller
 		  if($this->review->view_status_noPesanan($no_pesanan)){ //pengecekan apakan no pesanan ada
 			  $no_pesanan=$this->request->post('no_pesanan');
 			  $id_status=$this->review->view_status_noPesanan($no_pesanan)->status;
+				
 				  if($this->review->view_order_status($id_status)){ //pengecekan order statusS
 					$keterangan=$this->review->view_order_status($id_status)->keterangan;
 					$instruksi=$this->review->view_order_status($id_status)->instruksi;
-					 echo '
+					if($id_status == '3'){
+						 echo '
+						<p id="pesannya" class="center size18 red"><strong>'.ucwords($keterangan).'</strong><br/></p>
+						<ol>
+							<li>'.$instruksi.'</li>
+							<li>Atau Jika anda yakin sudah membayar, Silahkan Refresh kembali halaman ini untuk permintaan verifikasi ulang</li>
+						</ol>
+						<p id="pesannya" class="center size18 red"><strong>Terimakasih</strong></p>
+					  ';
+					}else{
+						echo '
 						<p id="pesannya" class="center size18 green"><strong>'.ucwords($keterangan).'</strong><br/>
 						'.$instruksi.'
 						</p>
 					  ';
+					}
+					 
 				  //Script Kirim Email disini
 				  
 				  }

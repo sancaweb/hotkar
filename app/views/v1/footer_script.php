@@ -1,13 +1,5 @@
 <!-- Javascript -->
-	<?php if(isset($page)){
-		if($page=='home'){
-			?>
-    <!-- This page JS -->
-	<script src="<?php echo $this->uri->baseUri.STYLE;?>assets/js/js-index3.js"></script>	
-		<script src="<?php echo $this->uri->baseUri.STYLE;?>assets/js/js-scroll-page.js"></script>
-	<?php
-		}
-	}?>
+	<script src="<?php echo $this->uri->baseUri.STYLE;?>assets/js/template.js"></script>
 	
     <!-- Custom functions -->
     <script src="<?php echo $this->uri->baseUri.STYLE;?>assets/js/functions.js"></script>
@@ -34,17 +26,12 @@
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="<?php echo $this->uri->baseUri;?>style/bootstrap/js/bootstrap.min.js"></script>
-	
+	<script src="<?php echo $this->uri->baseUri.STYLE;?>assets/js/counter.js"></script>
 	<?php if(isset($page)){
-		if($page=='list' || $page=='hotel'){
 		?>			
-		<script src="<?php echo $this->uri->baseUri.STYLE;?>assets/js/js-list3.js"></script>
-		<script src="<?php echo $this->uri->baseUri.STYLE;?>assets/js/counter.js"></script>
-		 <!-- Counter -->
 		
 	
 		<?php
-	}
 	//admhotel
 	if($page=='admhotel'){
 		?>
@@ -74,11 +61,8 @@
     <script src="<?php echo $this->uri->baseUri.STYLE;?>new_carousel/jssor.slider-21.1.6.mini.js" type="text/javascript"></script>
     <script src="<?php echo $this->uri->baseUri.STYLE;?>new_carousel/new_carousel.js" type="text/javascript"></script>
 	<!-- END New Carousel -->
-	
-		<script src="<?php echo $this->uri->baseUri.STYLE;?>assets/js/js-details.js"></script>
-					
-		<script src="<?php echo $this->uri->baseUri.STYLE;?>assets/js/js-scroll-page.js"></script>	
-		<script src="<?php echo $this->uri->baseUri.STYLE;?>assets/js/counter.js"></script>		
+		
+				
 		<!-- Carousel-->	
 		<script src="<?php echo $this->uri->baseUri.STYLE;?>assets/js/initialize-carousel-detailspage.js"></script>	
 		<script>
@@ -102,10 +86,7 @@
 		
 		if($page=='booking_form' || $page=='procek_pemesanan'  || $page=='booking_review' || $page=='info_pembayaran' || $page=='finish_booking'){
 			?>
-		<script src="<?php echo $this->uri->baseUri.STYLE;?>assets/js/js-details.js"></script>			
-		<script src="<?php echo $this->uri->baseUri.STYLE;?>assets/js/js-scroll-page.js"></script>			
-	<!-- Javascript  -->
-	<script src="<?php echo $this->uri->baseUri.STYLE;?>assets/js/js-payment.js"></script>
+				
 	<!-- Load Animo -->
 	<script src="<?php echo $this->uri->baseUri.STYLE;?>plugins/animo/animo.js"></script>
 			<?php
@@ -131,29 +112,5 @@
 			<?php
 		}
 		
-		if($page=='cek_pemesanan'){
-			?>
-						
-		<script src="<?php echo $this->uri->baseUri.STYLE;?>assets/js/js-scroll-page.js"></script>			
-				<script src="<?php echo $this->uri->baseUri.STYLE;?>assets/js/js-new-homepage.js"></script>
-			<?php
-		}
 	} //END ISSET $PAGE
 	?>
-
-	<script>
-	jQuery(function() {
-	"use strict";
-		var dateToday = new Date(); 
-		jQuery( "#datepicker,#datepicker3,#datepicker4,#datepicker5,#datepicker6,#datepicker7,#datepicker8" ).datepicker({
-			dateFormat: "yy-mm-dd",
-			minDate: dateToday
-		}).datepicker("setDate",new Date());
-		
-		
-		jQuery( "#datepicker2" ).datepicker({
-			dateFormat: "yy-mm-dd",
-			minDate: "+1"
-		}).datepicker("setDate",new Date());
-	});
-	</script>

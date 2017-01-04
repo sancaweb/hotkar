@@ -110,8 +110,8 @@ class Booking extends Resources\Controller
 			$checkout=$this->request->post('checkout');
 			$jml_kamar=$this->request->post('jml_kamar');
 			$no_pesanan=$this->request->post('no_pesanan');
-			
-			$total_bayar=$this->request->post('total_bayar');
+			$random_unik=rand(1,999);
+			$total_bayar=$this->request->post('total_bayar') + $random_unik;
 			
 			$nama_guest=ucwords($this->request->post('nama_guest',FILTER_SANITIZE_MAGIC_QUOTES));
 			$no_tlp=$this->request->post('no_tlp');
@@ -133,6 +133,7 @@ class Booking extends Resources\Controller
 				'permintaan'=>$permintaan,
 				'book_date'=>date("Y-m-d H:i:s"),
 				'total_bayar'=>$total_bayar,
+				'kode_transaksi'=>$random_unik,
 				'status'=>'1',
 				'input_date'=>date('Y-m-d'),
 			);
@@ -160,6 +161,7 @@ class Booking extends Resources\Controller
 			$data['jml_kamar']=$jml_kamar;
 			$data['id_pesanan']=$id_pesanan; 
 			$data['no_pesanan']=$no_pesanan;
+			$data['random_unik']=$random_unik;
 			
 
 			//data FORM

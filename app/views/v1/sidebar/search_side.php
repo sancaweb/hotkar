@@ -17,7 +17,7 @@
 <div class="bookfilters hpadding20">
 	<div class="clearfix"></div><br/>
 	
-	<div class="hotelstab2 none">
+	<div class="hotelstab2 ">
 	<form id="form_checkin" data-toggle="validator" enctype="multipart/form-data" role="form" method="POST" method="POST" action="<?php echo $this->uri->baseUri;?>index.php/hotel/pencarian">
 		<span class="opensans size13">Cari Hotel</span>
 		<input id="auto_complete" name="cari_hotel" type="text" class="form-control input-lg" placeholder="Nama Hotel atau Kecamatan">

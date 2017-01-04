@@ -98,81 +98,31 @@
 					
 							<br/>
 							<br/>
-							<span class="size16px bold dark left">Pilih Bank</span>
+							<span class="size16px bold dark left">Rekening Bank</span>
 							<div class="roundstep right">2</div>
 							<div class="clearfix"></div>
 							<div class="line4"></div>
-							
-							<div class="row">
-								  <div class="col-md-4">
-									<div class="itemlabel_bank">
-									<div class="radio">
-									  <label>
-									  
-										<input type="radio" id="optionsRadios1" value="1" <?php if($nama_bank==1){echo 'checked';}?> disabled>
-										Transfer ke Bank Mandiri
-									  
-									  </label>
-									</div>
-										<div class="center">
-										<div class="line4"></div>			
-											<span class="dark size24"><b>Bank Mandiri</b></span>
-											<div class="line2"></div>											
-											<span class="green size18"><b>Nomer Rekening</b></span>
-											<p class="grey2 size16"><strong>0875545245</strong></p>
-											<div class="line2"></div>											
-											<span class="green size18"><b>Nama Pemilik</b></span>
-											<p class="grey2 size16"><strong>HotelKarawang.com</strong></p>
-											<div class="line2"></div>											
-											
-										</div>
-									</div>
-								</div>
-								  <div class="col-md-4">
-									<div class="itemlabel_bank">
-									<div class="radio">
-									  <label>
-										<input type="radio" id="optionsRadios1" value="2" <?php if($nama_bank==2){echo 'checked';}?> disabled>
-										Transfer ke Bank BCA
-									  </label>
-									</div>
-										<div class="center">
-										<div class="line4"></div>			
-											<span class="dark size24"><b>Bank BCA</b></span>
-											<div class="line2"></div>											
-											<span class="green size18"><b>Nomer Rekening</b></span>
-											<p class="grey2 size16"><strong>012345678</strong></p>
-											<div class="line2"></div>											
-											<span class="green size18"><b>Nama Pemilik</b></span>
-											<p class="grey2 size16"><strong>HotelKarawang.com</strong></p>
-											<div class="line2"></div>											
-											
-										</div>
-									</div>
-								</div>
-								  <div class="col-md-4">
-									<div class="itemlabel_bank">
-									<div class="radio">
-									  <label>
-										<input type="radio" id="optionsRadios1" value="3" <?php if($nama_bank==3){echo 'checked';}?> disabled>
-										Transfer ke Bank BRI
-									  </label>
-									</div>
-										<div class="center">
-										<div class="line4"></div>			
-											<span class="dark size24"><b>Bank BNI</b></span>
-											<div class="line2"></div>											
-											<span class="green size18"><b>Nomer Rekening</b></span>
-											<p class="grey2 size16"><strong>34523452345</strong></p>
-											<div class="line2"></div>											
-											<span class="green size18"><b>Nama Pemilik</b></span>
-											<p class="grey2 size16"><strong>HotelKarawang.com</strong></p>
-											<div class="line2"></div>											
-											
-										</div>
-									</div>
-								</div>							  
-							  </div>
+							<?php 
+								  $data_bank=$this->pengaturan->getall_data_bank_by_ID($nama_bank);
+								  if($data_bank){
+									  ?>
+										<div class="itemlabel_bank">
+												<div class="center">
+												<div class="line4"></div>			
+													<span class="dark size24"><b><?php echo $data_bank->nama_bank;?></b></span>
+													<div class="line2"></div>											
+													<span class="green size18"><b>Nomer Rekening</b></span>
+													<p class="grey2 size16"><strong><?php echo $data_bank->norek;?></strong></p>
+													<div class="line2"></div>											
+													<span class="green size18"><b>Nama Pemilik</b></span>
+													<p class="grey2 size16"><strong><?php echo $data_bank->nama_pemilik;?></strong></p>
+													<div class="line2"></div>											
+													
+												</div>
+											</div>
+									  <?php
+								  }
+								  ?>
 					
 					<div class="clearfix"></div>					
 					<br/>

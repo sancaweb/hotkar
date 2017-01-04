@@ -111,10 +111,16 @@
 						<p class="grey2 size16"><strong>
 							<strong><?php echo 'Rp. '.number_format($total_bayar,0,'','.');?> </strong>
 						</strong></p>
-						<p class="red size18">(Jangan di bulatkan)</p>
+						
 						<div class="line2"></div>											
 						</div>
 					</div>
+					<p class="red size18">Informasi Penting: </p>
+						<ol class="red size18">
+							<li>Nominal jangan dibulatkan untuk kemudahan verifikasi pembayaran.</li>
+							<li>Total sudah beserta kode unik transaksi</li>
+							<li>Kode Unik Transaksi = <strong><u><?php echo $random_unik;?></u></strong></li>
+						</ol>
 					<br/>
 					<br/>
 					<span class="size16px bold dark left">

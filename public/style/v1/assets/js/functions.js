@@ -1,7 +1,3 @@
-
-
-
-
 jQuery(document).ready(function(){
 "use strict";
 /* GETS 100% HEIGHT FOR FILTERS BG*/
