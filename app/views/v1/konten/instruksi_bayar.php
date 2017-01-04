@@ -132,7 +132,7 @@
 						<?php
 					}else{
 						?>
-						<a href="<?php echo $this->uri->baseUri.'index.php/booking/finish_booking/'.base64_encode($order_id);?>" id="button_konfirmasi" class="bluebtn margtop20 btn-block center">Konfirmasi Pembayaran</a>
+						<a href="<?php echo $this->uri->baseUri.'index.php/booking/finish_booking/'.base64_encode($id_pesanan);?>" id="button_konfirmasi" class="bluebtn margtop20 btn-block center">Konfirmasi Pembayaran</a>
 						<?php
 					}?>
 					

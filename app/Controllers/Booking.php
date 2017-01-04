@@ -15,7 +15,7 @@ class Booking extends Resources\Controller
 		$this->booking = new Models\Booking;
 		$this->pengaturan = new Models\Pengaturan;
 		$this->randomstring = new Libraries\Randomstring;
-		
+		$this->email_attach = new Libraries\Email;
     }
 	
 	public function index()
@@ -35,7 +35,6 @@ class Booking extends Resources\Controller
 			$bln=date("m");
 			$thn=date("y");
 			$no_pesanan=$tgl.$acak.$bln.$thn;
-			
 			
 			$data['data_kamar']=$this->hotel->view_kamar_byId($id_kamar);
 			$data['checkin']=$checkin;
@@ -140,26 +139,26 @@ class Booking extends Resources\Controller
 			
 			if($this->session->getValue('no_pesanan')){
 				$no_pesanannya=$this->session->getValue('no_pesanan');
-				$order_id=$this->booking->view_id_by_no_pesanan($no_pesanannya)->id;
+				$id_pesanan=$this->booking->view_id_by_no_pesanan($no_pesanannya)->id;
 			}else{
 				if($this->booking->view_id_by_no_pesanan($no_pesanan)){
 					$no_pesanannya=$no_pesanan;
-					$order_id=$this->booking->view_id_by_no_pesanan($no_pesanannya)->id;
+					$id_pesanan=$this->booking->view_id_by_no_pesanan($no_pesanannya)->id;
 					$this->session->setValue('no_pesanan',$no_pesanannya);
 				}else{
-					$order_id=$this->booking->input_order($data_order);
+					$id_pesanan=$this->booking->input_order($data_order);
 					$this->session->setValue('no_pesanan',$no_pesanan);
 				}
 				
 			}
 			
 			$data['data_kamar']=$this->hotel->view_kamar_byId($id_kamar);
-			$data['book_date']=$this->booking->view_bookdate_byId($order_id)->book_date;
+			$data['book_date']=$this->booking->view_bookdate_byId($id_pesanan)->book_date;
 			
 			$data['checkin']=$checkin;
 			$data['checkout']=$checkout;
 			$data['jml_kamar']=$jml_kamar;
-			$data['order_id']=$order_id; 
+			$data['id_pesanan']=$id_pesanan; 
 			$data['no_pesanan']=$no_pesanan;
 			
 
@@ -185,11 +184,11 @@ class Booking extends Resources\Controller
 		}
 	}
 	
-	public function finish_booking($order_id){
+	public function finish_booking($id_pesanan){
 			
-			$order_id=base64_decode($order_id);
-			//echo $order_id;exit;
-			$data_order=$this->booking->view_order($order_id);	
+			$id_pesanan=base64_decode($id_pesanan);
+
+			$data_order=$this->booking->view_order($id_pesanan);	
 			$data['data_kamar']=$this->hotel->view_kamar_byId($data_order->id_kamar);
 			$data['checkin']=$data_order->checkin;
 			$data['checkout']=$data_order->checkout;
@@ -201,7 +200,6 @@ class Booking extends Resources\Controller
 			$data["page"]='finish_booking';
 			$data['menu']='hotel';
 			$this->output(TEMPLATE.'konten/finish_booking', $data);
-		
 	}
 		
 	public function procek_pemesanan(){
