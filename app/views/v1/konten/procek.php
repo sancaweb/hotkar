@@ -39,6 +39,17 @@
 						<h3><i class="icon fa fa-check"></i> Status Pemesanan: <?php echo $status_order->keterangan;?></h3>
 						<h4><i class="fa fa-id-card-o" aria-hidden="true"></i> <?php echo $status_order->instruksi;?></h4>
 						
+						<?php 
+							if($data_pesanan->status==1){
+								?>
+								<hr />
+								<p class="red"><sup>*</sup>Klik tombol jika sudah transfer</p>
+								<a  href="<?php echo $this->uri->baseUri.'index.php/booking/finish_booking/'.base64_encode($data_pesanan->id);?>" id="button_konfirmasi" class="btn btn-lg btn-block btn-primary">
+								Konfirmasi Pembayaran
+								</a>
+								<?php
+							}
+						?>						
 						</div>
 						</p>
 						<br/>
@@ -100,77 +111,27 @@
 								<div class="roundstep right">2</div>
 								<div class="clearfix"></div>
 								<div class="line4"></div>
-								
-								<div class="row">
-								  <div class="col-md-4">
-									<div class="itemlabel_bank">
-									<div class="radio">
-									  <label>
-									  
-										<input type="radio" id="optionsRadios1" value="1" <?php if($data_pesanan->bank_transfer==1){echo 'checked';}?> disabled>
-										Transfer ke Bank Mandiri
-									  
-									  </label>
-									</div>
-										<div class="center">
-										<div class="line4"></div>			
-											<span class="dark size24"><b>Bank Mandiri</b></span>
-											<div class="line2"></div>											
-											<span class="green size18"><b>Nomer Rekening</b></span>
-											<p class="grey2 size16"><strong>0875545245</strong></p>
-											<div class="line2"></div>											
-											<span class="green size18"><b>Nama Pemilik</b></span>
-											<p class="grey2 size16"><strong>HotelKarawang.com</strong></p>
-											<div class="line2"></div>											
-											
-										</div>
-									</div>
-								</div>
-								  <div class="col-md-4">
-									<div class="itemlabel_bank">
-									<div class="radio">
-									  <label>
-										<input type="radio" id="optionsRadios1" value="2" <?php if($data_pesanan->bank_transfer==2){echo 'checked';}?> disabled>
-										Transfer ke Bank BCA
-									  </label>
-									</div>
-										<div class="center">
-										<div class="line4"></div>			
-											<span class="dark size24"><b>Bank BCA</b></span>
-											<div class="line2"></div>											
-											<span class="green size18"><b>Nomer Rekening</b></span>
-											<p class="grey2 size16"><strong>012345678</strong></p>
-											<div class="line2"></div>											
-											<span class="green size18"><b>Nama Pemilik</b></span>
-											<p class="grey2 size16"><strong>HotelKarawang.com</strong></p>
-											<div class="line2"></div>											
-											
-										</div>
-									</div>
-								</div>
-								  <div class="col-md-4">
-									<div class="itemlabel_bank">
-									<div class="radio">
-									  <label>
-										<input type="radio" id="optionsRadios1" value="3" <?php if($data_pesanan->bank_transfer==3){echo 'checked';}?> disabled>
-										Transfer ke Bank BRI
-									  </label>
-									</div>
-										<div class="center">
-										<div class="line4"></div>			
-											<span class="dark size24"><b>Bank BNI</b></span>
-											<div class="line2"></div>											
-											<span class="green size18"><b>Nomer Rekening</b></span>
-											<p class="grey2 size16"><strong>34523452345</strong></p>
-											<div class="line2"></div>											
-											<span class="green size18"><b>Nama Pemilik</b></span>
-											<p class="grey2 size16"><strong>HotelKarawang.com</strong></p>
-											<div class="line2"></div>											
-											
-										</div>
-									</div>
-								</div>							  
-						  </div>
+								  <?php 
+								  $data_bank=$this->pengaturan->getall_data_bank_by_ID($data_pesanan->bank_transfer);
+								  if($data_bank){
+									  ?>
+										<div class="itemlabel_bank">
+												<div class="center">
+												<div class="line4"></div>			
+													<span class="dark size24"><b><?php echo $data_bank->nama_bank;?></b></span>
+													<div class="line2"></div>											
+													<span class="green size18"><b>Nomer Rekening</b></span>
+													<p class="grey2 size16"><strong><?php echo $data_bank->norek;?></strong></p>
+													<div class="line2"></div>											
+													<span class="green size18"><b>Nama Pemilik</b></span>
+													<p class="grey2 size16"><strong><?php echo $data_bank->nama_pemilik;?></strong></p>
+													<div class="line2"></div>											
+													
+												</div>
+											</div>
+									  <?php
+								  }
+								  ?>
 
 							<div class="clearfix"></div>					
 							<br/>

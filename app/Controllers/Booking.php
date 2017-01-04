@@ -184,29 +184,47 @@ class Booking extends Resources\Controller
 		}
 	}
 	
-	public function finish_booking($id_pesanan){
+	public function finish_booking($id_pesanan=''){
+			$id_pesanan=$id_pesanan;
+			if($id_pesanan == ''){
+				$this->redirect('home');
+			}else{
+				$id_pesanan=base64_decode($id_pesanan);
+				
+				$data_order=$this->booking->view_order($id_pesanan);
+				if($data_order){
+					
+					$data_pesanan=array(
+						'status'=>'2'
+					);
+					$this->booking->edit_status($data_pesanan,$id_pesanan);
+					
+					
+					$data['data_kamar']=$this->hotel->view_kamar_byId($data_order->id_kamar);
+					$data['checkin']=$data_order->checkin;
+					$data['checkout']=$data_order->checkout;
+					$data['jml_kamar']=$data_order->jml_kamar;
+					$data['no_pesanan']=$data_order->no_pesanan;
+					$data['total_bayar']=$data_order->total_bayar;
+					$data['title'] = 'Pembayaran';
+					$data['subtitle']= 'Halaman utama';
+					$data["page"]='finish_booking';
+					$data['menu']='hotel';
+					
+					$this->output(TEMPLATE.'konten/finish_booking', $data);
+				}else{
+					$this->redirect('home');
+				}
+				
+			}
 			
-			$id_pesanan=base64_decode($id_pesanan);
-
-			$data_order=$this->booking->view_order($id_pesanan);	
-			$data['data_kamar']=$this->hotel->view_kamar_byId($data_order->id_kamar);
-			$data['checkin']=$data_order->checkin;
-			$data['checkout']=$data_order->checkout;
-			$data['jml_kamar']=$data_order->jml_kamar;
-			$data['no_pesanan']=$data_order->no_pesanan;
-			$data['total_bayar']=$data_order->total_bayar;
-			$data['title'] = 'Pembayaran';
-			$data['subtitle']= 'Halaman utama';
-			$data["page"]='finish_booking';
-			$data['menu']='hotel';
-			$this->output(TEMPLATE.'konten/finish_booking', $data);
 	}
 		
 	public function procek_pemesanan(){
 		
 		if($_POST){
 		$no_pesanan=TRIM($this->request->post('no_pesanan',FILTER_SANITIZE_MAGIC_QUOTES));
-		//echo $no_pesanan;exit;
+		
 		$data_pesanan=$this->booking->viewall_by_no_pesanan($no_pesanan);
 		
 		$data['title'] = 'Cek Pemesanan';

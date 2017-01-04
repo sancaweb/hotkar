@@ -33,5 +33,7 @@ class Pengaturan {
 		return $this->db->insert('kec_karawang',$data_kec_karawang);
 	}
 	
-	
+	public function getall_data_bank_by_ID($id){
+		return $this->db->row("SELECT * FROM data_bank WHERE id='".$id."'");
+	}
 }
