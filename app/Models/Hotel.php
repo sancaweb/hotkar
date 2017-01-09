@@ -24,6 +24,7 @@ class Hotel {
 		return $this->db->results("SELECT id,nama_hotel,kecamatan FROM hotel ORDER by nama_hotel ASC");
 	}
 	
+	
 	public function viewall_hotel_limit($limit){
 		return $this->db->results("SELECT id,nama_hotel,kecamatan FROM hotel ORDER by rand() LIMIT $limit");
 	}
@@ -191,6 +192,9 @@ class Hotel {
 		return $this->db->row("SELECT * FROM kamar WHERE id='".$id_kamar."'");
 	}
 	
+	public function view_namaKamar_byID($id_kamar){
+		return $this->db->row("SELECT nama_kamar FROM kamar WHERE id='".$id_kamar."' ORDER BY nama_kamar ASC");
+	}
 	//gambar kamar	
 	
 	public function input_gambar_kamar($gambar_kamar){

@@ -40,6 +40,11 @@
 			<i class="fa fa-bed"></"></i> <span>Data Kamar</span> <small class="label pull-right bg-green">new</small>
 		  </a>
 		</li>
+		<li <?php if($page=='booking'){echo 'class="active"';}?>>
+		  <a href="<?php echo $this->uri->baseUri;?>index.php/adm_booking">
+			<i class="fa fa-bed"></"></i> <span>Data Booking</span> <small class="label pull-right bg-green">new</small>
+		  </a>
+		</li>
 		
 		<li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
 		<li class="header">LABELS</li>

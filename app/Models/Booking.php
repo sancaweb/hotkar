@@ -17,6 +17,15 @@ class Booking {
 		return $id;
 	}
 	
+	
+	public function viewall_order_page($page = 1, $limit = 5){
+		$offset = ($limit * $page) - $limit;
+		return $this->db->results("SELECT * FROM pemesanan ORDER by FIELD (status,'2','5','1','3','4','6','7') ASC, book_date DESC LIMIT $offset,$limit");
+	}	
+	
+	public function totalAll_order(){
+		return $this->db->getVar("SELECT COUNT(id) FROM pemesanan");
+	}
 	public function view_order($id){
 		return $this->db->row("SELECT * FROM pemesanan WHERE id='".$id."'");
 	}
@@ -31,6 +40,10 @@ class Booking {
 	
 	public function viewall_by_no_pesanan($no_pesanan){
 		return $this->db->row("SELECT * FROM pemesanan WHERE no_pesanan='".$no_pesanan."'");
+	}
+	
+	public function viewall_status(){
+		return $this->db->results("SELECT * FROM status_order");
 	}
 	
 	public function view_order_status_byId($id){

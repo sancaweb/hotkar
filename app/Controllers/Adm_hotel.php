@@ -425,7 +425,7 @@ class Adm_hotel extends Resources\Controller
 		$data['subtitle']= 'Data Kamar Hotel';
 		$data["page"]='kamar';
 		$data['konten']='admin/konten/kamar';
-		
+		//$data['list_hotel']=$this->hotel->viewall_hotel();
         $this->output('admin/index', $data);
     }
 	

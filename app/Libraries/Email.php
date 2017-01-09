@@ -6,9 +6,9 @@ class Email {
     public function __construct(){
         
     }
-	public function email($penerima='',$pengirim='',$nama='',$subjek='',$pesan='',$file='')
+	public function email($penerima='',$pengirim='',$nama='',$subjek='',$pesan='',$files='')
 	{
-		$file='upload/attach/'.$files;
+		$file='upload/voucher/'.$files;
 		$penerima=$penerima;
 		$pengirim=$pengirim;
 		$nama=$nama;
@@ -17,6 +17,7 @@ class Email {
 		$ukuran=filesize($file);
 		$buka=fopen($file,"r");
 		$baca=fread($buka,$ukuran);
+		
 		fclose($buka);
 		$konten=base64_encode($baca);
 		$konten=chunk_split($konten);

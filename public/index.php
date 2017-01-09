@@ -21,7 +21,7 @@ $secret=md5('berkahsancaweb');
 define('SECRET',$secret);
 define ('ALAMAT_IP',$_SERVER['REMOTE_ADDR']);
 define ('KOMP',gethostbyaddr($_SERVER['REMOTE_ADDR']));
-define ('BROWSER',$_SERVER['HTTP_USER_AGENT']);
+//define ('BROWSER',$_SERVER['HTTP_USER_AGENT']);
 require_once GEAR.'Gear.php';
 
 // To sets which PHP errors are reported just like documented in this page

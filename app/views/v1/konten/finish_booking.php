@@ -68,6 +68,8 @@
 					<input type="hidden" id="no_pesanan" value="<?php echo $no_pesanan;?>">	
 					<div id="waktu_mundur"></div>
 					<p class="center">Voucher Hotel akan secara otomatis terkirim jika verifikasi berhasil.</p>
+					<p class="center red">Jika dalam waktu 15 menit voucher belum diterima, silahkan cek pemesanan.</p>
+					<p class="center red">Informasi lebih lanjut, hubungi kami.</p>
 					</div>
 						<div class="line2"></div>											
 					</div>
