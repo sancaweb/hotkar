@@ -69,7 +69,20 @@ class Adm_booking extends Resources\Controller
 			$data_pesanan=array(
 				'status'=>$status
 			);
-			//$this->booking->edit_status($data_pesanan,$id_pemesanan);
+			$this->booking->edit_status($data_pesanan,$id_pemesanan);
+			
+			$cetak=$this->pdf->cetak_voucher($id_pemesanan);
+			$data_print=$this->booking->viewall_by_ID($id_pemesanan);
+			$filename='voucher-'.$data_print->no_pesanan;
+			//data_email
+			$penerima='sanca.snake@gmail.com';
+			$pengirim='hotelkarawang.com';
+			$nama='Hotel Karawang ';
+			$subjek='Voucher Pemesanan';
+			$pesan='Terimakasih telah mempercayai hotelkarawang.com';
+			$files=$filename.'.pdf';
+			$this->email->email($penerima,$pengirim,$nama,$subjek,$pesan,$files);
+			
 			
 			//pagination
 			$this->pagination = new Resources\Pagination();

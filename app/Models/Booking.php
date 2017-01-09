@@ -42,6 +42,10 @@ class Booking {
 		return $this->db->row("SELECT * FROM pemesanan WHERE no_pesanan='".$no_pesanan."'");
 	}
 	
+	public function viewall_by_ID($id_pesanan){
+		return $this->db->row("SELECT * FROM pemesanan WHERE id='".$id_pesanan."'");
+	}
+	
 	public function viewall_status(){
 		return $this->db->results("SELECT * FROM status_order");
 	}

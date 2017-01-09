@@ -4,20 +4,60 @@ use Resources, Models, Libraries;
 
 class Print_pdf {
     
-    public function __construct(){
-        //parent::__construct();		
+    public function __construct(){	
 		$this->pdf = Resources\Import::vendor('mpdf60/mpdf');
+		$this->hotel = new Models\Hotel;
+		$this->pengaturan = new Models\Pengaturan;
+		$this->booking = new Models\Booking;
     }
-	public function cetak($filename="contoh",$nama_pemesan='nama_pemesan')
+	public function cetak_voucher($id_pemesanan='')
 	{
-		$filename=$filename;
-		$nama_pemesan=$nama_pemesan;
+		
+		//Data_print_pdf
+			$data_print=$this->booking->viewall_by_ID($id_pemesanan);
+			
+			$tgl_checkin=$data_print->checkin;
+			$tgl_checkout=$data_print->checkout;			
+			$selisih_hari=(strtotime ($tgl_checkout) - strtotime ($tgl_checkin)) / (60*60*24);
+			
+			
+			//data_hotel
+			$data_hotel=$this->hotel->view_nama_alamat_kec_byId($data_print->id_hotel);
+			$nama_hotel=$data_hotel->nama_hotel;
+			$alamat=$data_hotel->alamat;
+			$kecamatan=$data_hotel->kecamatan;			
+			$nama_kecamatan=$this->pengaturan->get_nama_kec_karawang_byId($kecamatan)->nama_kec;
+			
+			//data_kamar
+			$data_kamar=$this->hotel->view_kamar_byId($data_print->id_kamar);
+			$nama_kamar=$data_kamar->nama_kamar;
+			$harga='Rp. '.number_format($data_kamar->harga,0,'','.');
+			
+				$filename='voucher-'.$data_print->no_pesanan;
+				$nama_guest = $data_print->nama_guest;
+				$tlp = $data_print->tlp;
+				$email = $data_print->email;
+				$no_pesanan = $data_print->no_pesanan;
+				$checkin = date("d-M, Y",strtotime($data_print->checkin));
+				$checkout = date("d-M, Y",strtotime($data_print->checkout));
+				$selisih_hari = $selisih_hari;
+				$nama_hotel = $nama_hotel;
+				$alamat_hotel = $alamat.', '.$nama_kecamatan;
+				$nama_kamar =$nama_kamar;
+				$jml_kamar = $data_print->jml_kamar;
+				$selisih_hari = $selisih_hari;
+				$harga =$harga;
+				$total_bayar = 'Rp. '.number_format($data_print->total_bayar,0,'','.');			
+				$permintaan = $data_print->permintaan;
+		
+		
+		
 		$this->pdf->mPDF('c','A4','','' , 0 , 0 , 0 , 0 , 0 , 0); 
  
 		$this->pdf->SetDisplayMode('fullpage');
 		 
 		$this->pdf->list_indent_first_level = 0;  // 1 or 0 - whether to indent the first level of a list
-		$file=$this->uri->baseUri.'tmp_voucher/voucher_email.php';
+		//$file=$this->uri->baseUri.'tmp_voucher/voucher_email.php';
 		//$this->pdf->WriteHTML(file_get_contents($file));
 		$html='
 			<!DOCTYPE html>
@@ -173,7 +213,7 @@ class Print_pdf {
 			<body>
 			<div id="wrapper" >
 				<p style="text-align:left; font-weight:bold; padding-top:5mm;">
-				<img src="tmp_voucher/logo2.png" style="width:50%">
+				<img src="logo2.png" style="width:50%">
 				</p>
 				<br />
 				<table class="heading" style="width:100%;">
@@ -187,27 +227,27 @@ class Print_pdf {
 								<tr>
 								<td style="width:12mm;"><b>Nama</b></td>
 								<td style="width:1mm;">:</td>
-								<td style="width:67mm;">'.$nama_pemesan.'</td>			
+								<td style="width:67mm;">'.$nama_guest.'</td>			
 								</tr>
 								<tr>
 								<td><strong>Phone</strong></td>
 								<td >:</td>
-								<td>0998786876</td>			
+								<td>'.$tlp.'</td>			
 								</tr>
 								<tr>
 								<td><strong>Email</strong></td>
 								<td >:</td>
-								<td>email@mail.com</td>			
+								<td>'.$email.'</td>			
 								</tr>
 							</table>
 							
 						</td>
 						<td rowspan="2" valign="top" align="right" style="padding:3mm;">
 							<table id="table_border">
-								<tr><td>No. Pesanan : </td><td>0xx09809</td></tr>
-								<tr><td>Checkin : </td><td>01-Aug-2011</td></tr>
-								<tr><td>Checkout : </td><td>01-Aug-2011</td></tr>
-								<tr><td></td><td>2 Hari</td></tr>
+								<tr><td>No. Pesanan : </td><td>'.$no_pesanan.'</td></tr>
+								<tr><td>Checkin : </td><td>'.$checkin.'</td></tr>
+								<tr><td>Checkout : </td><td>'.$checkout.'</td></tr>
+								<tr><td></td><td>'.$selisih_hari.' Hari</td></tr>
 							</table>
 						</td>
 					</tr>
@@ -221,12 +261,12 @@ class Print_pdf {
 								<tr>
 								<td style="width:22mm;"><strong>Nama Hotel<strong></td>
 								<td style="width:1mm;">:</td>
-								<td style="width:57mm;">Nama Hotelnya</td>			
+								<td style="width:57mm;">'.$nama_hotel.'</td>			
 								</tr>
 								<tr>
 								<td ><strong>Alamat</strong></td>
 								<td >:</td>
-								<td >Alamat Hotelnya</td>			
+								<td >'.$alamat.','.$nama_kecamatan.'</td>			
 								</tr>
 						</table>
 						</td>
@@ -241,9 +281,9 @@ class Print_pdf {
 						<tr style="background:#eee;">
 							<td rowspan="2" style="width:5%;"><b>No</b></td>
 							<td rowspan="2"><b>Rooms</b></td>
-							<td colspan="2" style="width:10%;"><b>Quantity</b></td>
-							<td rowspan="2" style="width:15%;"><b>Rate</b></td>
-							<td rowspan="2" style="width:15%;"><b>Total</b></td>
+							<td colspan="2"><b>Quantity</b></td>
+							<td rowspan="2" style="width:20%;"><b>Rate</b></td>
+							<td rowspan="2" style="width:25%;"><b>Total</b></td>
 						</tr>
 						<tr style="background:#eee;">
 							<td style="width:10%;"><b>Rooms</b></td>
@@ -254,21 +294,21 @@ class Print_pdf {
 						<table>
 						<tr>
 							<td style="width:5%;">1</td>
-							<td style="text-align:left; padding-left:10px;">Nama Kamarnya<br />Description : Upgradation of telecrm</td>
-							<td class="mono" style="width:10%;">1</td>
-							<td class="mono" style="width:10%;">2</td>
-							<td style="width:15%;" class="mono">157.00</td>
-							<td style="width:15%;" class="mono">157.00</td>
+							<td style="text-align:left; padding-left:10px;">'.$nama_kamar.'</td>
+							<td class="mono" style="width:10%;">'.$jml_kamar.'</td>
+							<td class="mono" style="width:10%;">'.$selisih_hari.'</td>
+							<td style="width:20%;" class="mono">'.$harga.'</td>
+							<td style="width:25%;" class="mono">'.$total_bayar.'</td>
 						</tr>      
 						 
 					</table>
 					</div>
 					<br/>	
 					<div id="invoice_total">
-					   Perminataan Khusus :
+					   Permintaan Khusus :
 						<table>
 							<tr>
-								<td class="mono" style="text-align:center; ">ini adalah permintaan khusus	</td>
+								<td class="mono" style="text-align:center; ">'.$permintaan.'</td>
 								
 							</tr>
 						</table>
@@ -281,8 +321,11 @@ class Print_pdf {
 						<tr>
 							<td style="width:65%; text-align:left;" valign="top" class="mono">
 								Informasi :<br />
-								Dianjurkan untuk melakukan pengecekan keaslian voucher ini melalui alamat:<br />
-								http://hotelkarawang.com/index.php/booking/cek_pemesanan
+								<ol>
+									<li>Kunjungi alamat <a href="http://hotelkarawang.com/index.php/cek">http://hotelkarawang.com/index.php/cek</a>, untuk pengecekan Voucher.</li>
+									<li>Hubungi kami untuk penjelasan lebih lanjut.</li>
+								</ol>
+								
 							</td>
 						</tr>
 					</table>
@@ -296,9 +339,9 @@ class Print_pdf {
 					<div id="footer"> 
 						<table>
 							<tr >
-							<td><img src="tmp_voucher/phone.png" > &nbsp;<strong>Customer Service</strong></td>
+							<td><img src="phone.png" > &nbsp;<strong>Customer Service</strong></td>
 							<td><strong>Customer Service Email</strong></td>
-							<td rowspan="2"><img src="tmp_voucher/logo2.png" style="width:25%;"></td>
+							<td rowspan="2"><img src="logo2.png" style="width:25%;"></td>
 							</tr>
 							<tr>
 							<td>085699999</td>
