@@ -79,7 +79,9 @@ class Adm_booking extends Resources\Controller
 			$pengirim='hotelkarawang.com';
 			$nama='Hotel Karawang ';
 			$subjek='Voucher Pemesanan';
-			$pesan='Terimakasih telah mempercayai hotelkarawang.com';
+			$pesan='Terimakasih telah mempercayai hotelkarawang.com <br/>
+				Silahkan untuk menunjukan voucher ini ketika checkin!
+			';
 			$files=$filename.'.pdf';
 			$this->email->email($penerima,$pengirim,$nama,$subjek,$pesan,$files);
 			
