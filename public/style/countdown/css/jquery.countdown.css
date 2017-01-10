@@ -1,0 +1,91 @@
+/* jQuery Countdown styles 2.0.0. */
+.is-countdown {
+	height:100px;
+	border:1px solid #e5e5e5;
+	display: flex;
+	  flex-wrap: wrap;
+	  justify-content: center;
+	  align-items: center;
+}
+.countdown-rtl {
+	direction: rtl;
+}
+.countdown-holding span {
+	color: #888;
+}
+.countdown-row {
+	clear: both;
+	width: 100%;
+	padding: 0px 2px;
+	text-align: center;
+}
+.countdown-show1 .countdown-section {
+	width: 98%;
+}
+.countdown-show2 .countdown-section {
+	width: 48%;
+}
+.countdown-show3 .countdown-section {
+	width: 32.5%;
+}
+.countdown-show4 .countdown-section {
+	width: 24.5%;
+}
+.countdown-show5 .countdown-section {
+	width: 19.5%;
+}
+.countdown-show6 .countdown-section {
+	width: 16.25%;
+}
+.countdown-show7 .countdown-section {
+	width: 14%;
+}
+.countdown-section {
+	display: block;
+	float: left;
+	font-size: 75%;
+	text-align: center;
+}
+.countdown-amount {
+    font-size: 200%;
+}
+.countdown-period {
+    display: block;
+}
+.countdown-descr {
+	display: block;
+	width: 100%;
+}
+
+/*----- 3.1. Countdown -----*/
+
+.hasCountdown {
+	height:115px;
+}
+
+.itemc {
+	float:left;
+	text-align:center;
+	margin:0 auto;
+	width:100px;
+	height:100px;
+	border:1px solid #e5e5e5;	
+	background:#fdfdfd url(../img/form-pattern.png) repeat scroll 0 0;
+	-moz-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);		
+}
+
+.itemc span {
+	font-size:16px;
+	clear:both;
+	color:#a5a5a5;
+}
+
+.itemc p {
+	text-align:center;
+	margin-bottom:10px;
+	font-size:48px;
+	height:60px;
+	line-height:64px;
+}
