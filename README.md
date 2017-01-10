@@ -1,2 +1,0 @@
-# hotkar
-Aplikasi Hotel
