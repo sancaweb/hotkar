@@ -1,0 +1,17 @@
+- nama_pemesan $nama_guest
+- phone $tlp
+- email $email
+- no_pesanan  $no_pesanan
+- checkin $checkin    01-Aug-2011
+- checkout $checkout
+- selisih_hari $selisih_hari
+- nama hotel $nama_hotel
+- alamat hotel $alamat_hotel
+- Nama kamar $nama_kamar
+- jumlah kamar $jml_kamar
+- jumlah hari $selisih_hari
+- rate kamar $harga
+- total bayar $total_bayar
+- permintaan khusus $permintaan
+- customer Service
+- Email CS

@@ -1,0 +1,119 @@
+#Gambar_hotel
+ 1.id (int 20)
+ 2. id_hotel (int 20)
+ 3. url_gambar (varchar 50)
+ 4. featured (yes or no (varchar 4))
+ 5. input_date
+
+#Gambar_kamar
+ 1. id (int 20)
+ 2. id_kamar (int 20)
+ 3. url_gambar (varchar 50)
+ 4. input_date
+
+# Hotel
+ 1. id (int 20)
+ 2. nama_hotel (varchar 50)
+ 3. alamat (text)
+ 4. rekomendasi (int 20) << delete
+ 5. informasi (long text)
+ 6. user_id
+ 7. input_date (date)
+
+# Fasilitas hotel 
+ 1. id (int 20)
+ 2. id_hotel (int 20)
+ 3. fasilitas_hotel (varchar 50)
+
+# Fasilitas Kamar
+ 1. id (int 20)
+ 2. id_hotel (int 20)
+ 3. id_kamar ( int 20)
+ 4. fasilitas_kamar (varchar 50)
+ 
+
+#Kamar
+ 1. id (int 20)
+ 2. id_hotel (int 20)
+ 3. nama_kamar (varchar 50)
+ 4. kapasitas (int 4)
+ 5. harga (int 20)
+ 6. jumlah_ketersediaan (int 20 )
+ 7. url_gambar (varchar 50)
+
+# Review
+ 1. id (int 20)
+ 2. id_hotel (int 20)
+ 3. judul (varchar 50 )
+ 4. testimoni (text )
+ 5. bintang (int 4)
+----------- untuk penilaian 0-10)
+ 6. kebersihan (int 4)
+ 7. kenyamanan (int 4)
+ 8. keamanan (int 4)
+ 9. pelayanan (int 4)
+
+#diskon
+ 1. id
+ 2. id_hotel
+ 3. id_kamar
+ 3. judul_diskon
+ 3. persen 
+ 4. start_date
+ 5. end_date
+
+#user_hotel diganti (u_back
+ 1. id (int20)
+ 2. username (acak) (varchar20)
+ 3. password (varchar40)
+ 4. Nama Pengguna (varchar 50)
+ 5. email (varchar 50)
+ 6. url_foto (varchar 50)
+ 7. user_grup (int20)
+ 8. input_date date
+
+#ORder
+ 1. id (int 20)
+ 2. no_pesanan
+ 3. nama_pemesan (varchar 50)
+ 4. tlp (varchar 20)
+ 5. nama_guest (varchar 50)
+ 6. bank_transfer (int 4)
+ 7. email (varchar 50)
+ 8. id_hotel (int 20)
+ 9. id_kamar (int 20)
+ 10. checkin (date)
+ 11. chekcout (date)
+ 12. input_date (date)
+ 13. status (varchar 50)
+
+#Data_bank
+ 1. id (int 20)
+ 2. nama_bank (varchar 50)
+ 3. nama_pemilik (varchar 50)
+ 4. norek (varchar 20)
+ 5. input_date (date)
+
+#Profile
+ 1. id
+ 2. username
+ 3. password
+ 4. nama
+ 5. alamat
+ 6. 
+
+
+
+
+
+========================
+Penilaian:
+- Kebersihan
+- Kenyamanan
+- Pelayanan
+- Fasilitas
+
+- Nama
+- Asal Kota
+- Judul
+- Komentar
